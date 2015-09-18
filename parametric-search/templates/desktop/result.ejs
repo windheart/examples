@@ -1,0 +1,65 @@
+<div class="panel-body clearfix">
+    <h5>Мы подобрали для Вас <span class="tour-parametric-search-result-count"><%- priceCount %> <%- textUtil.numberSuffix(priceCount, 'тур', 'тура', 'туров') %></span></h5>
+    <blockquote style="margin-bottom: 20px">
+        <p>Цены указаны за <strong>весь заказ</strong>, включая обязательные доплаты</p>
+    </blockquote>
+    <table class="table table-striped">
+        <tbody>
+        <% _.each(prices, function(price) { %>
+        <tr>
+            <td>
+                <p><strong><a href="/tour/<%- price.siteTour %>?variant=<%- price.variant %>&date=<%- price.date %>&popup=1" onclick="Tour.showTourInfo(this); return false;" target="_blank"><%- price.name %></a></strong></p>
+                <p class="text-muted"><%- price.hotel %></p>
+
+                <% if (price.avia) { %>
+                <p><span class="initialism" title="<%- price.avia.details.firstFlight %> <%= price.avia.details.lastFlight %>"><%= price.avia.firstFlight %></span></p>
+                <% } %>
+
+                <% if (price.spo) { %>
+                <span class="label label-danger">#spo</span>
+                <% } %>
+
+                <% if (price.quota == 1) { %>
+                <span class="label label-warning">#мало мест</span>
+                <% } %>
+
+                <% if (price.quota == 2) { %>
+                <span class="label label-danger">#места по запросу</span>
+                <% } %>
+            </td>
+            <td>
+                <p><a href="/tour/<%- price.siteTour %>?variant=<%- price.variant %>&date=<%- price.date %>&popup=1" onclick="Tour.showTourInfo(this); return false;" target="_blank"><%- moment(price.date).format('D MMMM, dddd') %></a></p>
+                <p class="text-muted"><%- price.duration %> <%- textUtil.numberSuffix('день', 'дня', 'дней') %></p>
+            </td>
+            <td>
+                <p><%- price.meal %></p>
+            </td>
+            <td>
+                <p><%- price.room.name %></p>
+                <p class="text-muted"><%- price.room.details %></p>
+            </td>
+            <td style="white-space: nowrap">
+                <% if (price.spo) { %>
+                    <p class="text-danger"><strong><%- textUtil.numberFormat(price.spo.price, 0, '.', ' ') %> <%- price.currency %></strong></p>
+                    <p class="text-muted"><s><%- textUtil.numberFormat(price.price, 0, '.', ' ') %> <%- price.currency %></s></p>
+                <% } else { %>
+                    <p><strong><%- textUtil.numberFormat(price.price, 0, '.', ' ') %> <%- price.currency %></strong></p>
+                <% } %>
+                <p><%- price.priceInclude %></p>
+                <a class="btn btn-inverse btn-xs" href="/tour/booking/tour/<%- price.siteTour %>?v=<%- price.variant %>&d=<%- price.date %>" target="_blank">Бронь</a>
+            </td>
+        </tr>
+        <% }) %>
+        </tbody>
+    </table>
+
+    <% if (pages > 1) { %>
+    <div class="pagination pull-right">
+        <ul>
+            <% _.times(pages, function(num) { %>
+            <li <%= htmlUtil.isActive(num + 1, currentPage) %> ><a href="#" name="currentPage" data-value="<%- num + 1 %>"><%- num + 1 %></a></li>
+            <% }) %>
+        </ul>
+    </div>
+    <% } %>
+</div>

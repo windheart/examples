@@ -1,0 +1,36 @@
+<div class="panel-body">
+
+    <% if (showCitySelector) { %>
+    <div class="form-group">
+      <label class="text-info">Город</label>
+      <select class="form-control" name="currentCityId">
+        <% _.each(cities, function(city) { %>
+          <option <%= isSelected(city.id, parseInt(currentCityId)) %> value="<%= city.id %>"><%= getCityName(city.name) %></option>
+        <% }) %>
+      </select>
+    </div>
+    <% } %>
+
+    <div class="form-group">
+      <label class="text-info"><%= labels('hotel') %> <% if (showCityName) { %>в <a target="_blank" href="/city/<%= currentCityId %>"><%= currentCityName() %></a><% } else { %>по маршруту<% } %></label>
+      <select class="form-control" name="currentHotelId">
+        <%= groupHotelsByCategory() %>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="text-info">Питание</label>
+      <select class="form-control" name="currentMealId">
+        <% _.each(meals, function(meal) { %>
+          <option <%= isSelected(meal.id, parseInt(currentMealId)) %> value="<%= meal.id %>"><%= getMealName(meal.name) %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="form-group">
+    <label class="text-info">Номер в отеле</label>
+    <div class="tour-booking-room-collection"></div>
+    </div>
+
+</div>
+

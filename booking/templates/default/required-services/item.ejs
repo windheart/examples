@@ -1,0 +1,13 @@
+<td class="tour-booking-service-name">
+  <%= normalizeName(name) %>
+</td>
+<td class="tour-booking-service-price text-muted">
+  <%= getPrice(price, currentTouristQuantity) %>
+</td>
+<td>
+  <select class="form-control input-sm" name="currentTouristQuantity">
+    <% _.times(touristQuantity + 1, function(num) { %>
+    <option <%= isSelected(num, currentTouristQuantity) %> value="<%= num %>"><%= num %></option>
+    <% }) %>
+  </select>
+</td>

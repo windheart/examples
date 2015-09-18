@@ -1,0 +1,39 @@
+<div class="col-xs-2 form-group">
+  <select class="form-control input-sm" name="categoryId">
+    <% _.each(categories, function(category) { %>
+      <option <%= htmlUtil.isSelected(category.id, categoryId) %> value="<%= category.id %>"><%= category.name %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="col-xs-3 form-group">
+  <select class="form-control input-sm" name="variantId">
+    <% _.each(variants, function(variant) { %>
+      <option <%= htmlUtil.isSelected(variant.id, variantId) %> value="<%= variant.id %>" title="<%= variant.name %>"><%= getVariantName(variant) %></option>
+    <% }) %>
+  </select>
+</div>
+
+<div class="col-xs-2 form-group">
+  <% if (hasExtraVariants) { %>
+    <label class="checkbox-inline">
+      <input type="checkbox" <% if (showExtraPlace) { %>checked="checked" <% } %> value="" class="tour-booking-room-toggle-extra-place"> доп.место
+    </label>
+  <% } %>
+</div>
+
+<div class="col-xs-4 form-group">
+  <% if (showExtraPlace && hasExtraVariants) { %>
+  <select class="form-control input-sm" name="extraVariantId">
+    <% _.each(extraVariants, function(extraVariant) { %>
+      <option <%= htmlUtil.isSelected(extraVariant.id, extraVariantId) %> value="<%= extraVariant.id %>" title="<%= extraVariant.name %>"><%= getVariantName(extraVariant) %></option>
+    <% }) %>
+  </select>
+  <% } %>
+</div>
+
+<% if (isRemovable) { %>
+<div class="col-xs-1 form-group tour-booking-room-remove">
+  <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+</div>
+<% } %>

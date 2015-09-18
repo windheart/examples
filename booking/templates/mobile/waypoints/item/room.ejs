@@ -1,0 +1,33 @@
+<div class="form-group">
+    <select class="form-control" name="categoryId">
+        <% _.each(categories, function(category) { %>
+        <option <%= isSelected(category.id, categoryId) %> value="<%= category.id %>"><%= category.name %></option>
+        <% }) %>
+    </select>
+</div>
+
+<div class="form-group">
+    <select class="form-control" name="variantId">
+        <% _.each(variants, function(variant) { %>
+        <option <%= isSelected(variant.id, variantId) %> value="<%= variant.id %>" title="<%= variant.name %>"><%= getVariantName(variant) %></option>
+        <% }) %>
+    </select>
+</div>
+
+<% if (hasExtraVariants) { %>
+<div class="form-group">
+    <label class="checkbox-inline">
+        <input type="checkbox" <% if (showExtraPlace) { %>checked="checked" <% } %> value="" class="tour-booking-room-toggle-extra-place"> Дополнительное место
+    </label>
+</div>
+<% } %>
+
+<% if (showExtraPlace && hasExtraVariants) { %>
+<div class="form-group">
+    <select class="form-control" name="extraVariantId">
+    <% _.each(extraVariants, function(extraVariant) { %>
+      <option <%= isSelected(extraVariant.id, extraVariantId) %> value="<%= extraVariant.id %>" title="<%= extraVariant.name %>"><%= getVariantName(extraVariant) %></option>
+    <% }) %>
+    </select>
+</div>
+<% } %>

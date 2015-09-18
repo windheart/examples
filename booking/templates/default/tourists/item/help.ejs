@@ -1,0 +1,24 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h4 class="modal-title">Как узнать мой ID?</h4>
+    </div>
+    <div class="modal-body">
+        <% if (socialNetwork == 'facebook') { %>
+            <h4>Facebook</h4>
+            <p>В разделе "Настройки" в строке "Имя пользователя"</p>
+            <p><img src="/public/res/tour/booking/images/fb_help.png" class="tour-booking-tourist-social-help-screen"></p>
+        <% } %>
+
+        <% if (socialNetwork == 'vkontakte') { %>
+            <h4>Вконтакте</h4>
+            <p>В разделе "Настройки -> Общее" в строке "Номер страницы"</p>
+            <p><img src="/public/res/tour/booking/images/vk_help.png" class="tour-booking-tourist-social-help-screen"></p>
+        <% } %>
+
+        <% if (socialNetwork == 'instagram') { %>
+        <h4>Instagram</h4>
+        <p>Ваш логин при входе в Instagram является именем пользователя</p>
+        <% } %>
+    </div>
+</div>

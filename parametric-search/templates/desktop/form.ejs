@@ -1,0 +1,67 @@
+<div class="panel-heading palette palette-wet-asphalt">Поиск готового тура</div>
+<div class="panel-body palette palette-orange">
+    <form>
+        <div class="form-group has-feedback input-daterange">
+            <div class="col-xs-6 <%- htmlUtil.hasError('dateMin', validationError) %>">
+                <input value="<%- dateMin %>" name="dateMin" placeholder="Заезды с" type="text"
+                       class="form-control input-sm tour-parametric-search-form-date">
+                <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+            </div>
+            <div class="col-xs-6">
+                <input value="<%- dateMax %>" name="dateMax" placeholder="Заезды по" type="text"
+                       class="form-control input-sm tour-parametric-search-form-date">
+                <span class="glyphicon glyphicon-calendar form-control-feedback"></span>
+            </div>
+        </div>
+
+        <div class="form-group <%- htmlUtil.hasError('currentCatalogId', validationError) %>">
+            <select name="currentCatalogId" class="form-control input-sm">
+                <option value="">Страна или каталог...</option>
+                <% _.each(catalogs, function(catalog) { %>
+                <option <%- htmlUtil.isSelected(catalog.id, currentCatalogId) %>
+                        value="<%- catalog.id %>"><%- catalog.name %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select name="currentPartitionId" class="form-control input-sm">
+                <option value="">Раздел каталога...</option>
+                <% _.each(partitions, function(partition) { %>
+                <option <%- htmlUtil.isSelected(partition.id, currentPartitionId) %>
+                        value="<%- partition.id %>"><%- partition.name %></option>
+                <% }) %>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-6">
+                <select class="form-control input-sm" name="adults">
+                    <% _.each(_.range(1, 5), function(num) { %>
+                    <option
+                            <%- htmlUtil.isSelected(num, adults) %>
+                            value="<%- num %>"><%- num %> <%- textUtil.numberSuffix(num, 'взрослый', 'взрослых', 'взрослого') %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="col-xs-6">
+                <select class="form-control input-sm" name="children">
+                    <% _.each(_.range(0, 4), function(num) { %>
+                    <option
+                            <%- htmlUtil.isSelected(num, children) %>
+                            value="<%- num %>"><%- num %> <%- textUtil.numberSuffix(num, 'ребенок', 'ребенка', 'детей') %></option>
+                    <% }) %>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group tour-parametric-search-form-submit">
+            <div class="col-xs-7 tour-parametric-search-form-agency-booking">
+                <strong><a href="/masterweb?country=11111128" target="_blank">Бронирование для Агентств (Master-Web)</a></strong>
+            </div>
+            <div class="col-xs-5">
+                <button type="submit" class="btn btn-inverse pull-right">Найти</button>
+            </div>
+        </div>
+    </form>
+</div>

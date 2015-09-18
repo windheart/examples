@@ -1,0 +1,13 @@
+<h3 class="text-muted">Тур</h3>
+
+<% if (isSelectable(variants)) { %>
+<select class="form-control" id="tour-booking-variant" name="currentVariantId">
+    <% _.each(variants, function(variant) { %>
+    <option <% if (variant.id == currentVariantId) { %>selected="selected"<% } %> value="<%= variant.id %>"><%= variant.name %></option>
+    <% }) %>
+</select>
+<% } else { %>
+<h4 class="tour-booking-variant-selected">
+    <a href="/tour/<%= id %>" target="_blank" style="text-align: right"><%= getFirstVariant(variants).name %></a>
+</h4>
+<% } %>

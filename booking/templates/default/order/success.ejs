@@ -1,0 +1,46 @@
+<div class="col-xs-12">
+    <h3 class="text-success">Бронь <strong><%= id %></strong> успешно создана!</h3>
+
+    <a target="_blank" class="btn btn-primary btn-lg"
+       href="https://pay.dsbw.ru/index/new/code/<%= id %>/sum/<%= sum %>/currency/<%= currency %>">
+        <span class="glyphicon glyphicon-credit-card"></span>
+        Оплатить заказ
+    </a>
+
+    <a target="_blank" class="btn btn-success btn-lg"
+       href="http://online.dsbw.ru/order?order=<%= id %>&key=<%= key %>&rtype=pdf">
+        <span class="glyphicon glyphicon-file"></span>
+        Лист бронирования
+    </a>
+
+    <% if (busseat.length) { %>
+    <a target="_blank" class="btn btn-warning btn-lg tour-booking-toggle-busseat"
+       href="#"><span class="glyphicon-regular glyphicon-bus"></span>
+        Рассадка в автобусе
+    </a>
+    <% } %>
+
+    <a target="_blank" class="btn btn-info btn-lg" href="http://online.dsbw.ru/profile?order=<%= id %>&key=<%= key %>">
+        <span class="glyphicon glyphicon-list-alt"></span>
+        Анкета туриста
+    </a>
+
+    <% if (showBusseat) { %>
+    <div class="tour-booking-busseat" style="margin-top: 20px">
+        <ul class="list-unstyled">
+            <% _.each(busseat, function(bus, index) { %>
+            <li>
+                <h4><%- bus.name %></h4>
+                <iframe width="100%" height="800" align="middle" frameborder="0" hspace="0" vspace="0" style="border: 0px;" id="bus-iframe-<%- index %>"
+                        src="http://dsbw.ru/busseat/scheme/<%- bus.dlCode %>/<%- bus.tourDate %>/<%- bus.dgCode %>/<%- bus.testPhrase %>">
+                </iframe>
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+    <% } %>
+
+</div>
+
+
+

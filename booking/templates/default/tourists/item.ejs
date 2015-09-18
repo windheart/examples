@@ -1,0 +1,126 @@
+<div class="row tour-booking-tourist-data">
+    <div class="form-group col-xs-3">
+        <input class="form-control tour-booking-tourist-name" type="text" placeholder="Фамилия" name="lastNameRu"
+               data-translit="lastName" value="<%= lastNameRu %>">
+    </div>
+
+    <div class="form-group col-xs-3">
+        <input class="form-control tour-booking-tourist-name" type="text" placeholder="Имя" name="firstNameRu"
+               data-translit="firstName" value="<%= firstNameRu %>">
+    </div>
+
+    <div class="form-group  tour-booking-tourist-birthday has-date has-feedback col-xs-4">
+        <input name="birthday" type="text" class="form-control" placeholder="Дата рождения" value="<%= birthday %>">
+        <span class="glyphicon glyphicon-calendar text-muted form-control-feedback"></span>
+    </div>
+
+    <div class="form-group col-xs-2">
+        <div class="btn-group tour-booking-tourist-sex">
+            <button type="button" name="sex" class="btn <%= isSelectedSex(sex, 0) %>" data-value="0">
+                <span class="glyphicon glyphicon-user"></span>
+            </button>
+            <button type="button" name="sex" class="btn <%= isSelectedSex(sex, 1) %>" data-value="1">
+                <span class="glyphicon-regular glyphicon-woman"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row tour-booking-tourist-passport">
+    <div class="col-xs-4">
+        <h4>Загранпаспорт</h4>
+    </div>
+    <div class="col-xs-8">
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <input class="form-control" type="text" placeholder="Фамилия латинскими" name="lastName"
+                       value="<%= lastName %>">
+            </div>
+            <div class="form-group col-xs-6">
+                <input class="form-control" type="text" placeholder="Имя латинскими" name="firstName"
+                       value="<%= firstName %>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-xs-3">
+                <input class="form-control" type="text" placeholder="Серия" name="passportSeries"
+                       value="<%= passportSeries %>">
+            </div>
+            <div class="form-group col-xs-3">
+                <input class="form-control" type="text" placeholder="Номер" name="passportNumber"
+                       value="<%= passportNumber %>">
+            </div>
+            <div class="form-group tour-booking-passport-valid-till has-date has-feedback col-xs-6">
+                <input name="passportValidTill" type="text" class="form-control" placeholder="Действует до"
+                       value="<%= passportValidTill %>">
+                <span class="glyphicon glyphicon-calendar text-muted form-control-feedback"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row tour-booking-tourist-social">
+    <div class="col-xs-12">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="checkbox">
+                        <label class="tour-booking-tourist-social-toggle">
+                            <input type="checkbox" name="isSocial" <% if (isSocial) { %>checked="checked"<% } %> value="1"> <strong>Я хочу быть в курсе новостей и состава группы тура через соцсети</strong>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <% if (isSocial) { %>
+
+            <p>При указании вашего ID в соответствующей соцсети мы будем иметь возможность пригласить вас в группу участников тура. В ней Вы сможете познакомиться с вашими попутчиками, получить подробную информацию, быть в курсе последних новостей, а также, в любой момент проконсультироваться с ведущими менеджерами. </p>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><a href="https://www.facebook.com/dsbw.ru" target="_blank" class="tour-booking-tourist-social-icon facebook"></a></span>
+                            <input type="text" name="facebook" class="form-control" placeholder="Имя пользователя в Facebook"  value="<%- facebook %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 tour-booking-tourist-social-help">
+                    <a href="#" data-social-network="facebook" class="tour-booking-tourist-show-social-help">Как узнать мое имя пользователя?</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><a href="https://vk.com/dsbw_ru" target="_blank" class="tour-booking-tourist-social-icon vkontakte"></a></span>
+                            <input type="text" name="vkontakte" class="form-control" placeholder="Номер страницы Вконтакте"  value="<%- vkontakte %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 tour-booking-tourist-social-help">
+                    <a href="#" data-social-network="vkontakte" class="tour-booking-tourist-show-social-help">Как узнать мой номер страницы?</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><a href="https://instagram.com/dsbwtours" target="_blank" class="tour-booking-tourist-social-icon instagram"></a></span>
+                            <input type="text" name="instagram" class="form-control" placeholder="Имя пользователя в Instagram" value="<%- instagram %>">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 tour-booking-tourist-social-help">
+                    <a href="#" data-social-network="instagram" class="tour-booking-tourist-show-social-help">Как узнать мое имя пользователя?</a>
+                </div>
+            </div>
+
+            <% } %>
+
+        </div>
+    </div>
+</div>
+
+

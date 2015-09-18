@@ -1,0 +1,27 @@
+<% if (hasError(status)) { %>
+  <div class="row">
+    <div class="alert alert-danger col-xs-12">Неверный логин или пароль</div>
+  </div>
+<% } %>
+
+<div class="row form-group">
+  <label class="col-xs-2 control-label">Логин</label>
+  <div class="col-xs-3">
+    <input type="text" class="form-control" name="login" value="<%= login %>">
+  </div>
+</div>
+<div class="row form-group">
+  <label class="col-xs-2 control-label">Пароль</label>
+  <div class="col-xs-3">
+    <input type="password" class="form-control" name="password" value="<%= password %>">
+  </div>
+  <div class="col-xs-3 tour-booking-auth-helper">
+    <a class="tour-booking-auth-recover-password" href="#">Забыли пароль?</a>
+  </div>
+</div>
+<div class="row form-group">
+  <div class="col-xs-offset-2 col-xs-10">
+    <button type="submit" class="btn btn-primary tour-booking-auth-login">Вход</button>
+    <a href="<%= registrationUrl %>" target="_blank" class="btn btn-warning tour-booking-auth-register" role="button">Регистрация</a>
+  </div>
+</div>

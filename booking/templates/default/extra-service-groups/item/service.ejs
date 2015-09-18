@@ -1,0 +1,13 @@
+<td>
+  <label class="checkbox-inline"><input <%= isActive() %> type="checkbox" value=""> <%= name %> <%= labels() %></label>
+</td>
+<td class="tour-booking-service-quantity">
+  <select class="form-control input-sm" name="currentTouristQuantity">
+    <% _.times(touristQuantity + 1, function(num) { %>
+    <option <%= isSelected(num, currentTouristQuantity) %> value="<%= num %>"><%= getNumWithText(num, 'турист', 'туриста', 'туристов') %></option>
+    <% }) %>
+  </select>
+</td>
+<td class="tour-booking-service-price">
+  <strong><%= getPrice(price, currentTouristQuantity) %></strong>
+</td>

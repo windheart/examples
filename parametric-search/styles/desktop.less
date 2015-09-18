@@ -1,0 +1,96 @@
+.tour-parametric-search-form {
+  width: 375px;
+  border: none;
+
+  &.panel {
+    .panel-heading {
+      border-radius: 6px 6px 0 0;
+    }
+    .panel-body {
+      border-radius: 0 0 6px 6px;
+    }
+  }
+
+  &-agency-booking {
+    line-height: 1.45;
+    text-decoration: underline;
+  }
+
+  .form-control {
+    border: 2px solid #F1C40F !important;
+
+    &.selectize-control {
+      border: none !important;
+      text-transform: none;
+    }
+
+    .selectize-input {
+      border: 2px solid #F1C40F !important;
+      border-radius: 6px;
+      min-height: 30px;
+      padding: 6px 10px;
+
+      &.focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .form-control-feedback {
+    color: #F1C40F !important;
+  }
+
+  form {
+    input {
+      text-align: left;
+    }
+
+    .form-group {
+      .clearfix;
+      margin-bottom: 15px !important;
+
+      &:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      .col-xs-6 {
+        padding-left: 5px;
+        &:first-child {
+          padding-left: 0;
+          padding-right: 5px;
+        }
+      }
+    }
+
+    select>option:nth-of-type(odd) {
+      background: #f9f9f9;
+
+    }
+  }
+}
+
+.tour-parametric-search-result {
+  h5 {
+    margin-top: 0 !important;
+  }
+  
+  &-count {
+    color: #F39C12;
+  }
+
+  p {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    margin: 0 0 2px 0 !important;
+  }
+
+  .pagination {
+    margin-bottom: 0 !important;
+  }
+}
+
+.tour-parametric-search-info {
+  text-transform: none !important;
+  margin-bottom: 20px !important;
+  border-radius: 6px;
+}

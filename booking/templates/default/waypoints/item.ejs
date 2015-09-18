@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-12 tour-booking-hotel">
+      <div class="row">
+
+        <% if (showCitySelector) { %>
+        <div class="col-xs-3 form-group">
+          <label>Город</label>
+          <select class="form-control" name="currentCityId">
+            <% _.each(cities, function(city) { %>
+              <option <%= htmlUtil.isSelected(city.id, currentCityId) %> value="<%= city.id %>"><%= getCityName(city.name) %></option>
+            <% }) %>
+          </select>
+        </div>
+        <% } %>
+
+        <div class="col-xs-<% if (showCitySelector) { %>6<% } else { %>8<% } %> form-group">
+          <label><%= labels('hotel') %> <% if (showCityName) { %>в <a target="_blank" href="/city/<%= currentCityId %>"><%= currentCityName() %></a><% } else { %>по маршруту<% } %></label>
+          <select class="form-control" name="currentHotelId">
+            <%= groupHotelsByCategory() %>
+          </select>
+        </div>
+        <div class="col-xs-<% if (showCitySelector) { %>3<% } else { %>4<% } %> form-group">
+          <label>Питание</label>
+          <select class="form-control" name="currentMealId">
+            <% _.each(meals, function(meal) { %>
+              <option <%= htmlUtil.isSelected(meal.id, currentMealId) %> value="<%= meal.id %>"><%= getMealName(meal.name) %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+      <div class="row tour-booking-room-collection-header">
+        <div class="col-xs-8">
+          <label><%= labels('rooms') %></label>
+        </div>
+        <div class="col-xs-4 tour-booking-hotel-add-room">
+          <a href="#"><%= labels('addRoom') %></a>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 tour-booking-room-collection"></div>
+</div>

@@ -1,0 +1,49 @@
+<div class="col-xs-4">
+  <h3>Основной пакет</h3>
+</div>
+<div class="col-xs-8 tour-booking-section-content">
+
+  <% if (showPricePerTourist) { %>
+  <h4>Стоимость за человека</h4>
+  <ul>
+    <li>Основное размещение &mdash; <strong><%= price.primaryCostPerTourist %> <%= price.currencySymbol %></strong></li>
+
+    <% if (price.extraCostPerTourist > 0) { %>
+    <li>Дополнительное размещение &mdash; <strong><%= price.extraCostPerTourist %> <%= price.currencySymbol %></strong></li>
+    <% } %>
+  </ul>
+  <% } %>
+
+  <% if (items) { %>
+    <h4>В стоимость входит</h4>
+    <ul>
+      <% _.each(items, function(item) { %>
+        <li><%= getPackageItem(item) %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <% if (services) { %>
+    <h4>В стоимость входит</h4>
+    <table class="table tour-booking-package-service-collection">
+      <% _.each(services, function (service) { %>
+      <tr>
+        <td>
+          <%= service.name %>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  <% } %>
+
+  <div class="tour-booking-price">
+    <h4>Стоимость основного пакета
+      <% if (isLocal) { %>
+        <a href="#" class="tour-booking-price-list-show"><%= getPrice(price) %></a>
+      <% } else { %>
+        <span><%= getPrice(price) %></span>
+      <% } %>
+    </h4>
+  </div>
+</div>
+

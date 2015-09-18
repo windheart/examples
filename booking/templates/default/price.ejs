@@ -1,0 +1,76 @@
+<div class="col-xs-4">
+  <h3>Итого</h3>
+</div>
+<div class="col-xs-8 tour-booking-section-content">
+  <h4>Порядок оплаты</h4>
+  <table class="table">
+
+    <% if (comission) { %>
+
+    <tr>
+      <td>Ваша комиссия (<%= comission %>% от основного пакета)</td>
+      <td class="tour-booking-price-value"><strong><%= getComissionInMoney(value, comission, currency) %></strong></td>
+    </tr>
+    <tr>
+      <td>Скидка туристам в счет комиссии</td>
+      <td class="tour-booking-price-value tour-booking-price-discount">
+        <select class="form-control input-sm" name="discount">
+          <% _.times(6, function(num) { %>
+          <option <%= isSelected(num, discount) %> value="<%= num %>"><%= num %>%</option>
+          <% }) %>
+        </select>
+      </td>
+    </tr>
+    <tr class="tour-booking-price-total tour-booking-price-total-comissionable">
+      <td>Итого к оплате</td>
+      <td class="tour-booking-price-value"><%= getTotal(total, currencySymbol, value, comission) %></td>
+    </tr>
+
+  <% } %>
+
+    <tr>
+      <td colspan="2">
+        <ul>
+          <% if (paymentDates.full) { %>
+          <li>
+            <% if (paymentDates.first) { %>
+              До <strong><%= paymentDates.first %></strong> - 35% <br>
+            <% } %>
+            <% if (paymentDates.half) { %>
+              До <strong><%= paymentDates.half %></strong> - 50% <br>
+            <% } %>
+            <% if (paymentDates.full) { %>
+              До <strong><%= paymentDates.full %></strong> - 100% от общей стоимости тура
+            <% } %>
+          </li>
+          <% } %>
+
+          <% if (currency != 'руб.') { %>
+            <li>
+              При оплате <strong>сегодня, <%= getDate('today') %></strong> &mdash; <strong><%= getPriceInRub(total, todayRate, 'num', value, comission) %></strong> (<%= getPriceInRub(total, todayRate, 'text', value, comission) %>)
+            </li>
+
+            <% if (tomorrowRate > todayRate) { %>
+            <li>
+              При оплате <strong>завтра, <%= getDate('tomorrow') %></strong> &mdash; <strong><%= getPriceInRub(total, tomorrowRate, 'num', value, comission) %></strong> (<%= getPriceInRub(total, tomorrowRate, 'text', value, comission) %>)
+            </li>
+            <% } %>
+          <% } %>
+
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <div class="tour-booking-price">
+    <h4>
+      Полная стоимость тура
+      <% if (isLocal) { %>
+        <a class='tour-booking-price-list-show' href='#'><%- getTotal(total, currencySymbol) %></a>
+      <% } else { %>
+        <span><%- getTotal(total, currencySymbol) %></span>
+      <% } %>
+    </h4>
+  </div>
+</div>
+

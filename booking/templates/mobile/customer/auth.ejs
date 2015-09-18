@@ -1,0 +1,16 @@
+<% if (hasError(status)) { %>
+    <div class="alert alert-danger">Неверный логин или пароль</div>
+<% } %>
+
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Логин" name="login" value="<%= login %>">
+</div>
+<div class="form-group">
+    <input type="password" placeholder="Пароль" class="form-control" name="password" value="<%= password %>">
+</div>
+<div class="form-group">
+  <div class="pull-right">
+    <button type="submit" class="btn btn-primary tour-booking-auth-login">Вход</button>
+    <a href="<%= registrationUrl %>" target="_blank" class="btn btn-warning tour-booking-auth-register" role="button">Регистрация</a>
+  </div>
+</div>

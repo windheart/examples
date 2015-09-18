@@ -1,0 +1,49 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Просмотр заказа</h4>
+    </div>
+    <div class="modal-body">
+        <h4>Основной пакет</h4>
+        <table class="table tour-booking-price-list-table">
+            <% _.each(package, function(service) { %>
+            <tr>
+                <td class="<%= getServiceHighlightClass(service) %>"
+                    data-service-type="<%= service.type %>"><%= service.name %></td>
+                <td class="tour-booking-price-list-price <%= getServiceHighlightClass(service) %>">
+                    <% if (service.price) { %>
+                    <% if (service.isGroupRate) { %>
+                    1
+                    <% } else { %>
+                    <%= service.amount %>
+                    <% } %>
+                    <small>X</small> <%= price(service.price) %> <%= currencySymbol %>
+                    <% } else { %>
+                    &mdash;
+                    <% } %>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+
+        <% if (showExtraServices) { %>
+
+        <h4>Дополнительные услуги</h4>
+        <table class="table tour-booking-price-list-table">
+            <% _.each(extra, function(service) { %>
+            <tr>
+                <td class="<%= getServiceHighlightClass(service) %>"
+                    data-service-type="<%= service.type %>"><%= service.name %></td>
+                <td class="tour-booking-price-list-price <%= getServiceHighlightClass(service) %>"><%= service.quantity %>
+                    <small>X</small> <%= price(service.price) %> <%= currencySymbol %></td>
+            </tr>
+            <% }) %>
+        </table>
+
+        <% } %>
+
+        <h4>Итого
+            <span class="tour-booking-total-price"><%= price(total) %> <%= currencySymbol %></span>
+        </h4>
+    </div>
+</div>

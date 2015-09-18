@@ -1,0 +1,49 @@
+<form class="modal-content form-horizontal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Связь с технической поддержкой</h4>
+    </div>
+    <div class="modal-body">
+        <% if (hasSuccess()) { %>
+
+        <div class="row">
+            <div class="alert alert-success col-xs-12"><%= message %></div>
+        </div>
+
+        <% } else { %>
+
+        <div class="tour-booking-password-recover-email">
+
+            <% if (hasError()) { %>
+
+            <div class="row">
+                <div class="alert alert-danger col-xs-12"><%= message %></div>
+            </div>
+
+            <% } %>
+
+            <div class="row">
+                <label class="col-xs-2 control-label">Код тура</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" name="tourId">
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-xs-2 control-label">Комментарий</label>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" name="comment">
+                </div>
+            </div>
+        </div>
+
+        <% } %>
+    </div>
+    <div class="modal-footer">
+        <% if (hasSuccess()) { %>
+        <button type="button" class="btn btn-primary">Закрыть</button>
+        <% } else { %>
+        <button type="submit" class="btn btn-primary">Отправить</button>
+        <% } %>
+    </div>
+</form>

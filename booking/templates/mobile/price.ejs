@@ -1,0 +1,31 @@
+
+
+        <table class="table table-condensed  text-warning">
+
+        <% if (comission) { %>
+
+
+        <tr>
+            <td style="width: 70%">Ваша комиссия
+                <small class="text-muted" style="display: block">(<%= comission %>% от основного пакета)</small>
+            </td>
+            <td><strong class="pull-right"><%= getComissionInMoney(value, comission, currency) %></strong></td>
+        </tr>
+        <tr>
+            <td>Итого к оплате</td>
+            <td>
+                <strong class="pull-right"><%= getTotal(total, currency, value, comission) %></strong>
+            </td>
+        </tr>
+
+        <% } %>
+
+        <tr class="text-info">
+            <td><strong>Полная стоимость тура</strong></td>
+            <td>
+                <strong class="pull-right"><%= getTotal(total, currency) %></strong>
+            </td>
+        </tr>
+
+        </table>
+

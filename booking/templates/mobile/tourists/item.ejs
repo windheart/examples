@@ -1,0 +1,30 @@
+<div class="panel-body">
+    <div class="form-group">
+        <div class="btn-group btn-group-justified tour-booking-tourist-sex">
+            <div class="btn-group">
+                <button type="button" name="sex" class="btn <%= isSelectedSex(sex, 0) %>" data-value="0">
+                    Мужчина
+                </button>
+            </div>
+            <div class="btn-group">
+                <button type="button" name="sex" class="btn <%= isSelectedSex(sex, 1) %>" data-value="1">
+                    Женщина
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input class="form-control tour-booking-tourist-name" type="text" placeholder="Фамилия" name="lastNameRu" data-translit="lastName" value="<%= lastNameRu %>">
+    </div>
+
+    <div class="form-group">
+        <input class="form-control tour-booking-tourist-name" type="text" placeholder="Имя" name="firstNameRu" data-translit="firstName" value="<%= firstNameRu %>">
+    </div>
+
+    <div class="form-group tour-booking-tourist-birthday has-date has-feedback">
+        <input name="birthday" type="text" class="form-control" placeholder="Дата рождения" value="<%= birthday %>">
+        <span class="glyphicon glyphicon-calendar text-muted form-control-feedback"></span>
+    </div>
+</div>
+

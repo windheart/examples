@@ -1,0 +1,26 @@
+<h3 class="text-muted">
+    Заказчик
+</h3>
+
+<% if (hasTypeSelect) { %>
+<div class="form-group">
+    <div class="btn-group btn-group-justified tour-booking-tourist-sex">
+        <div class="btn-group">
+            <button type="button" name="type" class="btn <%= isSelected('auth') %>" data-value="auth">
+                Агентство
+            </button>
+        </div>
+        <div class="btn-group">
+            <button type="button" name="type" class="btn <%= isSelected('client') %>" data-value="client">
+                Частное лицо
+            </button>
+        </div>
+    </div>
+</div>
+
+<% } %>
+
+<div class="tour-booking-customer-type-region"></div>
+
+
+

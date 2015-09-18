@@ -1,0 +1,12 @@
+<td style="width: 100%">
+  <label class="checkbox-inline"><input <%= isActive() %> type="checkbox" value=""> <%= name %> <%= labels() %></label>
+</td>
+<td>
+    <div class="form-group">
+        <select class="form-control" name="currentTouristQuantity" style="width: auto">
+            <% _.times(touristQuantity + 1, function(num) { %>
+            <option <%= isSelected(num, currentTouristQuantity) %> value="<%= num %>"><%= num %></option>
+            <% }) %>
+        </select>
+    </div>
+</td>

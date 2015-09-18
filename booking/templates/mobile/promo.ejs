@@ -1,0 +1,20 @@
+<h3 class="text-muted">Промо-код <i class="glyphicon glyphicon-question-sign tour-booking-promo-help"></i></h3>
+
+<% if (status == 'error') { %>
+<div class="alert alert-danger"><%= message %></div>
+<% } %>
+
+<% if (status == 'success') { %>
+<div class="alert alert-success">Промокод подтвержден, скидка добавлена</div>
+<% } %>
+
+<div class="input-group">
+    <input type="text" class="form-control" name="code" placeholder="У вас есть промокод?" value="<%= code %>">
+<span class="input-group-btn">
+<button class="btn btn-primary" id="tour-booking-promo-check" type="button">Проверить</button>
+</span>
+</div>
+
+
+
+
