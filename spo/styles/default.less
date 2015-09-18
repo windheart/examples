@@ -1,0 +1,136 @@
+#spo {
+  min-height: 330px;
+  position: relative;
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .form-control {
+    border: 2px solid #BDC3C7 !important;
+    padding-right: 0;
+
+    &.selectize-control {
+      border: none !important;
+      text-transform: none;
+    }
+
+    .selectize-input {
+      border: 2px solid #BDC3C7 !important;
+      border-radius: 6px;
+      min-height: 30px;
+      padding: 6px 10px;
+
+      &.focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .form-control-feedback {
+    color: #BDC3C7 !important;
+  }
+
+  .spo-date {
+    padding-left: 10px;
+
+    input {
+      text-align: left !important;
+    }
+  }
+  .spo-search {
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  .spo-search-hint {
+    font-size: 12px;
+  }
+
+
+  .spo-item-collection {
+    .clearfix();
+    margin: -3px 0 4px -20px;
+  }
+
+  .spo-item {
+    .clearfix();
+    width: 375px;
+    float: left;
+    padding: 20px 0 0 20px;
+
+    &.spo-item-empty {
+      width: auto;
+      font-weight: bold;
+    }
+
+    .spo-item-image {
+      float: left;
+      display: block;
+
+      img {
+        height: 105px;
+        width: 105px;
+      }
+    }
+
+    .spo-item-print {
+      font-size: 12px;
+      color: @brand-primary;
+      margin-top: 6px;
+      margin-bottom: 2px;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        color: darken(@brand-primary, 8%);
+      }
+    }
+
+    .spo-item-data {
+      overflow: hidden;
+      width: 240px;
+      height: 105px;
+      margin-left: 10px;
+      float: left;
+
+      h5 {
+        margin-top: 0;
+        font-size: 13px;
+
+        a {
+          color: #333;
+        }
+      }
+    }
+
+    .spo-item-price {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      display: block;
+      text-decoration: none;
+
+      .spo-item-price-base {
+        text-decoration: line-through;
+        color: @gray;
+        font-size: 75%;
+      }
+
+      .spo-item-price-details {
+        font-size: 11px;
+        font-weight: bold;
+      }
+    }
+
+    .spo-item-details {
+      font-size: 11px;
+      color: @gray-light;
+    }
+  }
+}
+
+
+.article, .section {
+  .clearfix();
+  overflow: auto;
+}

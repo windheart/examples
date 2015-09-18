@@ -1,0 +1,23 @@
+<div class="col-xs-7">
+    <div class="form-group has-feedback spo-catalog">
+        <select name="currentCatalogId" class="form-control input-sm">
+            <option value="">Страна или каталог...</option>
+            <% _.each(catalogs, function(catalog) { %>
+            <option <%- htmlUtil.isSelected(catalog.id, currentCatalogId) %>
+                    value="<%- catalog.id %>"><%- catalog.name %></option>
+            <% }) %>
+        </select>
+    </div>
+    <div class="spo-catalog-collection-region"></div>
+</div>
+<div class="col-xs-5 form-group has-feedback input-daterange">
+    <div class="col-xs-6 spo-date">
+        <input value="<%= getDate(dateAfter) %>" name="dateAfter" placeholder="Заезды с" type="text" class="form-control input-sm">
+        <span class="glyphicon glyphicon-calendar form-control-feedback text-<%= getColorClass(id) %>"></span>
+    </div>
+    <div class="col-xs-6 spo-date">
+        <input value="<%= getDate(dateUntil) %>" name="dateUntil" placeholder="Заезды по" type="text"
+               class="form-control input-sm">
+        <span class="glyphicon glyphicon-calendar form-control-feedback text-<%= getColorClass(id) %>"></span>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<a class="spo-item-image" href="<%= url %>" target="_blank">
+  <img src="http://dsbw.ru/public/site/images/photo/spo/preview/<%= id %>.jpg" class="img-rounded">
+</a>
+
+<div class="spo-item-data">
+  <h5 class="spo-item-name">
+    <a href="<%= url %>" target="_blank"><%= getName(name) %></a>
+  </h5>
+  <a class="spo-item-price" href="<%= url %>" target="_blank">
+    <span class="label label-danger">от <%= spoPrice %> <%= getCurrency(currency) %></span> <span class="spo-item-price-base"><%= basePrice %> <%= getCurrency(currency) %></span>
+    <span class="spo-item-price-details text-danger"><%= bonus %></span>
+  </a>
+  <div>
+    <a href="/site/spo/print?spoId=<%= id %>" class="spo-item-print">
+      <span class="glyphicon glyphicon-print"></span>
+      Печать
+    </a>
+  </div>
+  <div class="spo-item-details"><%= getDetails(details) %></div>
+</div>
