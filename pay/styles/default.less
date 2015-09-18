@@ -1,0 +1,210 @@
+.nav {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+}
+
+#page {
+  background: #fff !important;
+}
+
+.alert {
+  text-align: left;
+  font-size: 14px;
+  background: none;
+  margin: 20px 0 0 0;
+  padding: 0;
+  border: none;
+  border-radius: inherit;
+}
+
+.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+
+label, span {
+  vertical-align: initial;
+}
+
+#pay {
+
+  @import "main/card";
+  @import "main/credit";
+
+  min-height: 550px;
+  overflow: hidden;
+  margin: 20px 50px 15px 50px;
+  width: 900px;
+
+  .pay-banner {
+    overflow: hidden;
+    margin-top: 0;
+
+    ul {
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+
+    img {
+      float: left;
+    }
+    &-data {
+      float: left;
+      margin-left: 20px;
+      max-width: 680px;
+
+      h3 {
+        margin: 0;
+      }
+    }
+  }
+
+  // ��������� placeholder ��� jquery.placeholder
+  .placeholder {
+    color: #aaa !important;
+  }
+
+  .pay-start {
+    .clearfix();
+    background: #f5f5f5;
+
+    .pay-start-body {
+      margin-left: -20px;
+      margin-top: -20px;
+      .clearfix();
+    }
+
+
+    .pay-variant {
+      width: 47.5%;
+      min-height: 215px;
+      float: left;
+      margin-left: 20px;
+      margin-top: 20px;
+      margin-bottom: 0;
+      cursor: pointer;
+
+      table {
+        margin-top: -5px;
+        margin-bottom: 15px;
+        white-space: nowrap;
+
+        td {
+          padding: 5px 15px 5px 0px;
+        }
+      }
+
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+
+
+  #pay-article {
+
+    .panel {
+      .clearfix();
+    }
+
+    #pay-map {
+      width: 520px;
+      height: 400px;
+      float: right;
+      margin-left: 30px;
+      margin-top: -45px;
+    }
+
+    .pay-nav {
+      .clearfix();
+    }
+
+    .pay-variant-section {
+      .clearfix();
+      padding: 5px 25px 25px 25px;
+
+      h3 {
+        img {
+          margin-left: 5px;
+          margin-top: 0;
+
+        }
+      }
+
+      dl {
+        margin-bottom: 0;
+      }
+
+      .pay-logo {
+        margin-bottom: 25px;
+
+        .pay-goto-terminal {
+          &:first-child {
+            margin-left: 0;
+          }
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .pay-order {
+      .clearfix();
+      .pay-card-dg-code {
+        text-transform: uppercase;
+        &:-moz-placeholder {
+          text-transform: none;
+        }
+        &:-ms-input-placeholder {
+          text-transform: none;
+        }
+        &::-webkit-input-placeholder {
+          text-transform: none;
+        }
+      }
+
+      margin-bottom: 15px;
+      margin-top: 2px;
+
+      .form-group {
+        &:first-child {
+          margin-left: 0;
+        }
+        float: left;
+        margin-left: 10px;
+      }
+
+      input {
+        width: 153px;
+        font-weight: bold;
+      }
+
+      select {
+        width: 85px;
+        font-weight: bold;
+      }
+    }
+
+    .pay-checkout {
+      .clearfix();
+      margin-top: 40px;
+      width: 100%;
+    }
+
+    .pay-sum-total {
+      font-size: 26px;
+      margin-bottom: 7px;
+    }
+
+    .pay-terminal {
+      float: right;
+      margin-left: 30px;
+      margin-top: 60px;
+    }
+  }
+}

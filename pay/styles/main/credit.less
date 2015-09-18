@@ -1,0 +1,69 @@
+#pay-article .pay-order {
+  &.pay-credit-order {
+    margin-bottom: 0;
+  }
+}
+
+.pay-credit-view {
+
+  .pay-credit-rate-info {
+    margin-top: 0;
+    margin-bottom: 0;
+    clear: both;
+  }
+
+  .pay-credit-left-col {
+    float: left;
+  }
+
+  .pay-credit-right-col {
+    float: right;
+    margin-top: 23px;
+  }
+
+  .pay-credit-data {
+    width: 390px;
+
+    .pay-credit-data-limits-info {
+      .clearfix();
+      list-style-type: none;
+      padding-left: 0;
+
+      li {
+        font-size: 11px;
+
+        margin-left: 10px;
+        float: left;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        .badge {
+          font-size: 11px;
+
+          &.badge-success {
+            background-color: @brand-success;
+          }
+          &.badge-danger {
+            background-color: @brand-danger;
+          }
+        }
+      }
+    }
+
+    .pay-credit-data-details {
+      margin-top: 26px;
+      font-size: 12px;
+    }
+  }
+
+  .pay-credit-sum-total {
+    float: left;
+    max-width: 710px;
+  }
+
+  .pay-credit-gate-outer {
+    float: right;
+  }
+}

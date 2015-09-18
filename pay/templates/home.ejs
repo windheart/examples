@@ -1,0 +1,184 @@
+<div class="panel panel-primary pay-start">
+    <h2 class="panel-heading panel-title" style="font-size: 22px;">
+        <% if (dgCode) { %>
+        Вы оплачиваете заказ <strong><%= dgCode %></strong> на сумму <strong><%= originalSum %> <%= util.currencyHtml(currency) %></strong>
+        <% } else { %>
+        Варианты оплаты
+        <% } %>
+    </h2>
+    <div class="panel-body pay-start-body">
+
+        <div class="panel panel-info pay-variant" data-variant-id="cash" style="height: 450px;">
+            <div class="panel-heading" style="font-size: 18px;">
+                Наличные и банковский перевод
+            </div>
+            <div class="panel-body">
+
+                <table class="table">
+                    <tbody><tr>
+                        <th style="border-top: 0;"></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= currentDate %></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= tomorrowDate %></th>
+                    </tr>
+
+                    <% if (eurDiscountRate) { %>
+                        <tr>
+                            <th colspan="3" style="padding-left: 0;">Фиксированный курс (по акции)</th>
+                        </tr>
+
+                        <tr>
+                            <td style="padding-left: 15px;">Евро</td>
+                            <td><%= getRate(eurDiscountRate) %></td>
+                            <td><%= getRate(tomorrowEurDiscountRate) %></td>
+                        </tr>
+
+                        <tr>
+                            <td style="padding-left: 15px;">Доллар США</td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                        </tr>
+                    <% } %>
+
+                    <tr>
+                        <th colspan="3" style="padding-left: 0; padding-top: 15px; border-top: 0;">Льготный курс</th>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px">Евро</td>
+                        <td><%= getRate(eurPrefRate) %></td>
+                        <td><%= getRate(tomorrowEurPrefRate) %></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px;">Доллар</td>
+                        <td><%= getRate(usdPrefRate) %></td>
+                        <td><%= getRate(tomorrowUsdPrefRate) %></td>
+                    </tr>
+                    </tbody></table>
+
+                <p style="margin-top: 30px;"><strong>Евро и доллары США</strong></p>
+                <p style="margin-top: 10px;">принимаются <strong>по курсу 1:1</strong> в кассе СДМ банка, расположенной в офисе компании по адресу: <br>г. Москва, Лубянский проезд 19, м. &laquo;Китай-город&raquo;</p>
+
+            </div>
+        </div>
+
+        <div class="panel panel-info pay-variant" data-variant-id="card">
+            <div class="panel-heading" style="font-size: 18px;">
+                Банковская карта
+        <span style="margin-right: -10px; float: right;">
+          <img src="<%= util.image('pay', 'visa.png') %>" alt="">
+          <img src="<%= util.image('pay', 'mastercard.png') %>" alt="">
+          <img src="<%= util.image('pay', 'maestro.png') %>" alt="">
+          <img src="<%= util.image('pay', 'sber.gif') %>" alt="">
+        </span>
+            </div>
+            <div class="panel-body">
+                <table class="table" style="margin-bottom: 0;">
+                    <tbody><tr>
+                        <th style="border-top: 0;"></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= currentDate %></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= tomorrowDate %></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="padding-left: 0;">Курс</th>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px">Евро</td>
+                        <td><%= eurRate %> руб</td>
+                        <td><%= getRate(tomorrowEurRate) %></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px;">Доллар</td>
+                        <td><%= usdRate %> руб</td>
+                        <td><%= getRate(tomorrowUsdRate) %></td>
+                    </tr>
+                    </tbody></table>
+            </div>
+        </div>
+
+        <div class="panel panel-info pay-variant" data-variant-id="clearing">
+            <div class="panel-heading" style="font-size: 18px;">
+                Платежный перевод
+
+        <span style="float: right; margin-right: -10px;">
+          <img src="<%= util.image('pay', 'sber.gif') %>" alt="">
+          <img src="<%= util.image('pay', 'contact.png') %>" alt="">
+        </span>
+            </div>
+            <div class="panel-body">
+                <table class="table" style="margin-bottom: 0;">
+                    <tbody><tr>
+                        <th style="border-top: 0;"></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= currentDate %></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= tomorrowDate %></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="padding-left: 0;">Курс</th>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px">Евро</td>
+                        <td><%= eurRate %> руб</td>
+                        <td><%= getRate(tomorrowEurRate) %></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px;">Доллар</td>
+                        <td><%= usdRate %> руб</td>
+                        <td><%= getRate(tomorrowUsdRate) %></td>
+                    </tr>
+                    </tbody></table>
+
+            </div>
+        </div>
+
+        <div class="panel panel-info pay-variant" data-variant-id="terminal">
+            <div class="panel-heading" style="font-size: 18px;">
+                Платежные терминалы и салоны связи
+            </div>
+            <div class="panel-body">
+                <p>
+                    <img src="<%= util.image('pay', 'svyaznoy.png') %>" alt="">
+                    <img src="<%= util.image('pay', 'euroset.png') %>" alt="">
+                </p>
+                <p>
+                    <img src="<%= util.image('pay', 'tourpay.png') %>" alt="">
+                    <img src="<%= util.image('pay', 'rapida.png') %>" alt="">
+                </p>
+
+                <table class="table" style="margin-bottom: 0; margin-top: 15px;">
+                    <tbody><tr>
+                        <th style="border-top: 0;"></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= currentDate %></th>
+                        <th style="border-top: 0; padding-left: 0;"><%= tomorrowDate %></th>
+                    </tr>
+                    <tr>
+                        <th colspan="3" style="padding-left: 0;">Курс</th>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px">Евро</td>
+                        <td><%= eurRate %> руб</td>
+                        <td><%= getRate(tomorrowEurRate) %></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 15px;">Доллар</td>
+                        <td><%= usdRate %> руб</td>
+                        <td><%= getRate(tomorrowUsdRate) %></td>
+                    </tr>
+                    </tbody></table>
+            </div>
+        </div>
+
+        <% if (hasCreditAccess) { %>
+        <div class="panel panel-info pay-variant" data-variant-id="credit">
+            <div class="panel-heading" style="font-size: 18px;">
+                Кошелек ТА <span class="label label-danger">Новинка!</span>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Оплата заказа через кошелек для авторизированных агентств
+                </p>
+            </div>
+        </div>
+        <% } %>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,33 @@
+<div class="alert alert-success">
+  Платеж успешно завершен!
+</div>
+
+<dl class="pay-card-checkout dl-horizontal">
+  <dt>Код платежа</dt>
+  <dd><%= paymentId %></dd>
+
+  <dt>Дата платежа</dt>
+  <dd><%= paymentDate %></dd>
+
+  <dt>Заказ</dt>
+  <dd><%= dgCode %></dd>
+
+  <dt>Менеджер</dt>
+  <dd><%= manager %></dd>
+
+  <dt>Турист</dt>
+  <dd><%= tourist %></dd>
+
+  <dt>Зачислено</dt>
+  <dd><%= util.numberFormat(sumPayed, 0, '', ' ') %> <%= util.inciting(sumPayed, 'рубль', 'рубля', 'рублей') %></dd>
+
+  <dt>Осталось оплатить</dt>
+  <dd><%= util.numberFormat(sumRemaining, 0, '', ' ') %> <%= util.inciting(sumRemaining, 'рубль', 'рубля', 'рублей') %></dd>
+</dl>
+
+<div class="pay-checkout">
+  <a href="#credit" class="pay-credit-complete btn btn-success">Закрыть</a>
+  <% if (hasProfile) { %>
+  <a href="http://online.dsbw.ru/##OrderList" class="btn btn-warning" target="_blank">Перейти в личный кабинет <span class="glyphicon glyphicon-chevron-right"></span></a>
+  <% } %>
+</div>

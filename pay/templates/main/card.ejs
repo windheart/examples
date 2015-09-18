@@ -1,0 +1,125 @@
+<div id="pay-card-error-region"></div>
+
+<h3>
+  <span>Оплата банковской картой</span>
+  <span class="pay-card-logo">
+    <img src="<%= util.image('pay', 'visa.png') %>" alt="">
+    <img src="<%= util.image('pay', 'mastercard.png') %>" alt="">
+    <img src="<%= util.image('pay', 'maestro.png') %>" alt="">
+    <img src="<%= util.image('pay', 'sber.gif') %>" alt="">
+  </span>
+</h3>
+
+<div class="clearfix">
+
+  <!-- Левая колонка -->
+  <div class="pay-card-left-col">
+    <div class="pay-card-form form-inline">
+      <div class="pay-order">
+        <div class="form-group">
+          <input type="text" class="pay-tooltip pay-card-attr pay-card-dg-code form-control" name="dgCode" placeholder="Номер заказа" <% if (lockOrder) { %> disabled="disabled" <% } %> value="<%= dgCode %>" title="Номер заказа, например, FPR9010201">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="pay-tooltip pay-card-attr form-control pay-order-sum" name="originalSum" placeholder="Сумма к оплате" <% if (lockSum) { %> disabled="disabled" <% } %> value="<%= originalSum %>" title="Сумма к оплате в рублях">
+        </div>
+
+        <div class="form-group">
+          <select class="pay-tooltip pay-card-attr form-control" name="currentCurrencyId" <% if (lockSum) { %> disabled="disabled" <% } %>>
+            <% _.each(currencies, function(currency) { %>
+            <option <% if (currency.id == currentCurrencyId) { %>selected="selected"<% } %> value="<%= currency.id %>"><%= currency.name %></option>
+            <% }) %>
+          </select>
+        </div>
+      </div>
+
+      <div class="pay-card">
+        <div class="pay-card-front">
+
+          <div class="pay-card-number">
+            <% _.each(_.range(0,4), function(num) { %>
+            <div class="form-group">
+              <input type="text" maxlength="<%= (num != 3) ? 4 : 8 %>" class="pay-card-attr <% if (num != 3) { %>pay-card-number-part<% } else { %>pay-card-number-part-last<% } %> form-control" name="pan" data-part="<%= num %>" value="<%= pan[num] %>">
+            </div>
+            <% }) %>
+          </div>
+
+          <div class="pay-card-date">
+            <label>Действует до</label>
+
+            <div class="form-group pay-card-year">
+              <select class="pay-tooltip pay-card-attr form-control" name="expireYear" title="Год окончания действия карты">
+                <option></option>
+                <% _.each(_.range(2014, 2031), function(year) { %>
+                  <option <% if (year == expireYear) { %>selected="selected"<% } %> value="<%= year %>"><%= year %></option>
+                <% }) %>
+              </select>
+            </div>
+
+            <div class="form-group pay-card-month">
+              <select class="pay-tooltip pay-card-attr form-control" name="expireMonth" title="Месяц окончания действия карты">
+                <option></option>
+                <% _.each(_.range(1, 13), function(month) { %>
+                <option <% if (month == expireMonth) { %>selected="selected"<% } %> value="<%= month %>"><%= util.formatMonth(month) %></option>
+                <% }) %>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="pay-card-owner">
+            <div class="form-group">
+              <input class="pay-tooltip pay-card-attr form-control" name="cardholderName" type="text" placeholder="Имя и фамилия владельца карты" value="<%= cardholderName %>" title="Имя и фамилия владельца карты, например, Ivan Ivanov">
+            </div>
+          </div>
+
+        </div>
+        <div class="pay-card-back">
+          <div class="pay-card-magnetic-tape"></div>
+          <div class="pay-card-verification-code">
+            <div class="form-group">
+              <input class="pay-tooltip pay-card-attr form-control" name="cvc" maxlength="3" type="password" placeholder="CVV2/CVC2" value="<%= cvc %>" title="Последние 3 цифры кода на обратной стороне карты">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pay-card-how-to-fill">
+      <img src="<%= util.image('pay', 'card-how-to-fill.png') %>" alt="">
+    </div>
+
+  </div>
+  <!-- Левая колонка (end) -->
+
+  <!-- Правая колонка -->
+  <div class="pay-card-right-col">
+
+    <div class="pay-card-info">
+
+      <div class="pay-card-feedback">
+        Если у Вас возникли проблемы, связанные с оплатой или зачислением денег на бронь - Вы можете позвонить по телефону +7 (495) 781-00-41 доб. 0999, Павел
+      </div>
+
+      <div class="text-muted">
+        <p><strong style="color: #333">Высокая безопасность транзакции гарантирована "Сбербанком РФ"</strong>. Зачисление денег на путевку происходит мгновенно. Транзакция совершается на сайте банка. В случае если Ваш банк поддерживает технологию безопасного проведения интернет-платежей Verified By Visa или MasterCard Secure Code, для проведения платежа также может потребоваться ввод специального пароля. Способы и возможность получения паролей для совершения интернет-платежей Вы можете уточнить в банке, выпустившем карту.</p>
+        <p>Настоящий сайт поддерживает 128-битное шифрование. Конфиденциальность сообщаемой персональной информации обеспечивается ОАО "Сбербанк России". Введенная информация не будет предоставлена третьим лицам за исключением случаев, предусмотренных законодательством РФ. Проведение платежей по банковским картам осуществляется в строгом соответствии с требованиями платежных систем Visa Int. и MasterCard Europe Sprl.</p>
+      </div>
+      <div>
+        <p><strong class="text-danger">Внимание! В связи с политикой безопасности платежным шлюзом не принимаются карты, выпущенные иностранными банками.</strong></p>
+      </div>
+    </div>
+
+  </div>
+  <!-- Правая колонка (end) -->
+
+</div>
+
+<div class="pay-checkout">
+  <div class="pay-card-gate-outer">
+    <div class="pay-sum-total" id="pay-sum-total-region">###</div>
+    <div>
+        <button class="pay-card-gate btn btn-success btn-lg">Оплатить</button>
+    </div>
+  </div>
+</div>

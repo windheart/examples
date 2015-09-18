@@ -1,0 +1,62 @@
+<% if (errorMessage) { %>
+    <div class="alert alert-danger alert-dismissable">
+        <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= errorMessage %>
+    </div>
+<% } %>
+
+<div class="clearfix">
+
+    <div class="pay-credit-left-col">
+        <h3>Оплата в кредит</h3>
+        <div class="pay-order pay-credit-order">
+            <div class="pay-order-form">
+                <div class=form-group>
+                    <input type="text" class="pay-tooltip pay-credit-attr form-control" name="dgCode" placeholder="Номер заказа" value="<%= dgCode %>" title="Номер заказа, например, FPR9010201">
+                </div>
+
+                <div class=form-group>
+                    <input type="text" class="pay-tooltip pay-credit-attr form-control pay-order-sum" name="originalSum" placeholder="Сумма к оплате" value="<%= originalSum %>" title="Сумма к оплате в рублях">
+                </div>
+
+                <div class=form-group>
+                    <select class="pay-tooltip pay-credit-attr form-control" name="currentCurrencyId">
+                        <% _.each(currencies, function(currency) { %>
+                        <option <% if (currency.id == currentCurrencyId) { %>selected="selected"<% } %> value="<%= currency.id %>"><%= currency.name %></option>
+                        <% }) %>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="pay-credit-right-col">
+        <div class="pay-credit-data">
+            <ul class="pay-credit-data-limits-info">
+                <li><span class="text-muted">Лимит</span> <span class="badge"><%= util.numberFormat(limit, 0, '', ' ') %> <%= currency.name %></span></li>
+                <li><span class="text-muted">Доступно</span> <span class="badge badge-success"><%= util.numberFormat(available, 0, '', ' ') %> <%= currency.name %></span></li>
+                <li><span class="text-muted">Просрочено</span> <span class="badge badge-danger"><%= util.numberFormat(overdue, 0, '', ' ') %> <%= currency.name %></span></li>
+            </ul>
+            <div class="pay-credit-data-details">
+
+                <p><strong>Вы можете оплатить срочную бронь в кредит при достаточном размере лимита и отсутствии просрочек</strong></p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="alert alert-info pay-credit-rate-info">
+        <strong>Внимание!</strong> При расчете суммы в рублях для оплаты через Кошелек надо ориентироваться на НЕльготный (более высокий) курс.
+        В дальнейшем - при реальной оплате данной брони - ориентрироваться на соответствующий курс в зависимости от споспоба оплаты
+    </div>
+
+</div>
+
+<div class="pay-checkout">
+    <div class="pay-credit-sum-total pay-sum-total" id="pay-sum-total-region">###</div>
+    <div class="pay-credit-gate-outer">
+        <a href="#credit/process" class="pay-credit-gate btn btn-success btn-lg">Оплатить</a>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="pay-order pay-clearing-view">
+	<div class="form-group">
+		<input type="text" class="pay-tooltip pay-dg-code form-control" name="dgCode" placeholder="Номер заказа" <% if (lockOrder) { %> disabled="disabled" <% } %> value="<%= dgCode %>" title="Номер заказа, например, FPR9010201">
+	</div>
+
+	<div class="form-group">
+		<input type="text" class="pay-tooltip form-control pay-order-sum" name="originalSum" placeholder="Сумма к оплате" <% if (lockSum) { %> disabled="disabled" <% } %> value="<%= originalSum %>" title="Сумма к оплате">
+	</div>
+
+	<div class="form-group">
+		<select class="pay-tooltip form-control pay-currency" name="currentCurrencyId" <% if (lockSum) { %> disabled="disabled" <% } %>>
+			<% _.each(currencies, function(currency) { %>
+			<option <% if (currency.id == currentCurrencyId) { %>selected="selected"<% } %> value="<%= currency.id %>"><%= currency.name %></option>
+			<% }) %>
+		</select>
+	</div>
+	<div class="form-group">
+		<input type="hidden" name="type" value="<%= type %>"/>
+		<button class="btn btn-success btn-md save">Скачать <% if (type == 'sbrf') {%>квитанцию<% } else {%>счет<% }%></button>
+	</div>
+</div>
+
+<% if (error) { %>
+<div class="pay-ui-clearing-error alert alert-danger alert-dismissable">
+	<%= error %>
+	<span class="close" data-dismiss="alert">&times;</span>
+</div>
+<% } %>

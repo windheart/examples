@@ -1,0 +1,16 @@
+<% if (error) { %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+    <!-- Строка или объект с ошибками -->
+    <% if (_.isArray(error)) { %>
+      <ul>
+        <% _.each(error, function(err) { %>
+          <li><%= err %></li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <%= error %>
+    <% } %>
+  </div>
+<% } %>

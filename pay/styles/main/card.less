@@ -1,0 +1,155 @@
+.pay-card-view {
+
+  .pay-card-left-col {
+    float: left;
+  }
+  .pay-card-right-col {
+    float: right;
+  }
+
+  .pay-card {
+    position: relative;
+    width: 400px;
+    height: 190px;
+    .form-control {
+      padding: 6px 8px;
+    }
+
+  }
+
+  .pay-card-logo {
+    margin-left: 145px;
+    display: inline-block;
+  }
+
+  .pay-card-form {
+    margin-bottom: 30px;
+  }
+
+  .pay-card-how-to-fill {
+    text-align: center;
+  }
+
+  .pay-card-front, .pay-card-back {
+    float: left;
+    width: 281px;
+    height: 170px;
+    display: inline-block;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+    overflow: hidden;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+
+  .pay-card-front {
+    padding: 15px;
+    z-index: 1000;
+    position: relative;
+    background: #e1e1e3;
+  }
+
+  .pay-card-back {
+    position: absolute;
+    left: 133px;
+    top: 20px;
+    background: #c6c6c9;
+  }
+
+  .pay-card-number {
+    .clearfix();
+    .form-group {
+      &:first-child {
+        margin-left: 0;
+      }
+      margin-left: 5px;
+      float: left;
+      .form-control {
+        width: 50px;
+        &.pay-card-number-part-last {
+          width: 83px;
+        }
+      }
+    }
+  }
+
+  .pay-card-date {
+    .clearfix();
+    margin-top: 20px;
+    text-align: right;
+
+    label {
+      font-size: 11px;
+      font-weight: normal;
+      float: left;
+      margin-top: 9px;
+      margin-left: 2px;
+    }
+
+    .pay-card-month {
+      float: right;
+      .form-control {
+        width: 70px;
+      }
+    }
+
+    .pay-card-year {
+      float: right;
+      margin-left: 5px;
+      .form-control {
+        width: 83px;
+      }
+    }
+  }
+
+  .pay-card-owner {
+    margin-top: 20px;
+
+    input {
+      width: 248px;
+      margin-bottom: 0;
+    }
+  }
+
+  .pay-card-magnetic-tape {
+    margin-top: 17px;
+    height: 31px;
+    background: #333;
+  }
+
+  .pay-card-verification-code {
+    margin-top: 29px;
+    input {
+      width: 96px;
+      margin-left: 167px;
+    }
+  }
+
+  .pay-card-info {
+    float: right;
+    width: 390px;
+    font-size: 11px;
+
+    .pay-card-feedback {
+      color: @state-danger-text;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      margin-top: 20px;
+    }
+  }
+
+
+  .pay-card-gate-outer {
+    float: right;
+    text-align: right;
+  }
+
+}
